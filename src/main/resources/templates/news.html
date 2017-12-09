@@ -5,6 +5,14 @@
         <title>Ollimus News</title>
     </head>
     <body>
+        
+        <nav class="nlink">
+            <a class="home" href="/news"> Home</a>
+            <a class="write" href="/write"> Write</a>
+            <form class="logout"  th:action="@{/logout}" method="POST">
+                <input type="submit" value="Logout"></input>
+            </form>
+        </nav>
 
         <h2 th:text="${title}"/>
 
@@ -15,8 +23,6 @@
         <br/>
 
         <a th:text="${text}"/><br/><br/>
-
-        <a th:href="@{/news}">Back to Home</a>
         
     </body>
 </html>

@@ -40,6 +40,11 @@ public class NewsController {
         return "/home.html";
     }
     
+    @GetMapping("/write")
+    public String getWrite(){
+        return "/write.html";
+    }
+    
     @GetMapping("/news/{id}")
     public String getPage(Model model, @PathVariable Long id) {
         
@@ -87,4 +92,5 @@ public class NewsController {
         
         return "redirect:/news";
     }
+    
 }
