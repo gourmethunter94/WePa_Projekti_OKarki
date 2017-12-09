@@ -5,6 +5,7 @@
  */
 package wad.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,9 @@ public class NewsObject extends AbstractPersistable<Long> {
     
     private String title;
     
+    @Column(columnDefinition = "TEXT")
     private String text;
+    
+    private Long date;
     
 }

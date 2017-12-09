@@ -1,5 +1,6 @@
 package wad.config;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -20,15 +21,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/news").permitAll()
             .antMatchers("/news/*").permitAll()
             .antMatchers("/news/*/image").permitAll()
+            .antMatchers("/login").permitAll()
+            .antMatchers("/tyylit.css").permitAll()
+            .antMatchers("tyylit.css").permitAll()
             .anyRequest().authenticated().and()
             .formLogin().permitAll().and()
-            .logout().permitAll();
+            .logout().permitAll()
+            .logoutSuccessUrl("/news");
     }
-
+    
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("journalist").password("sensationalism").roles("USER");
+                .withUser("jour").password("nalist").roles("USER").authorities("USER");
+        
     }
     
 }

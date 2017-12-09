@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
     <head lang="en">
         <meta charset="UTF-8" />
         <title>Ollimus News</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/tyylit.css}"/>
     </head>
     <body>
         
         <nav class="nlink">
             <a class="home" href="/news"> Home</a>
             <a class="write" href="/write"> Write</a>
-            <form class="logout"  th:action="@{/logout}" method="POST">
-                <input type="submit" value="Logout"></input>
+            <form class="logout"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
+                  <input type="submit" value="Logout"></input>
             </form>
         </nav>
 
         <h2 th:text="${title}"/>
 
-        <div th:if="${current != null}">
-            <img th:src="@{/news/{id}/image(id=${current})}"/>
-        </div>
+        <p th:if="${current!=null}">
+        <img th:src="@{/news/{id}/image(id=${current})}"/>
+        </p>
 
         <br/>
 

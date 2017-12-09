@@ -1,0 +1,52 @@
+
+body {
+
+	font-family: Helvetica, Arial, sans-serif;
+	background-color: #efc;
+
+	margin-left: 4em;
+	margin-right: 20%;
+
+}
+
+
+h1.top {
+	border-bottom: thin solid gray;
+
+}
+
+
+img.vasen {
+	
+	float: left;
+
+}
+
+
+img.oikea {
+
+	float: right;
+
+}
+
+
+nav.nlink {
+
+	background: #deb;
+
+	padding: 6px;
+
+	margin-left: -4em;
+
+	margin-top: -0.5em;
+
+}
+
+
+#eka .eka, #toka .toka, #kolmas .kolmas {
+
+	background-color: #bca;
+
+	font-style: bold;
+
+}
