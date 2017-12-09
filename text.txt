@@ -1,0 +1,67 @@
+[33mcommit 15ed9dd7f2f2a08395f8487c5332bfe1572686e5[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 22:59:51 2017 +0200
+
+    support for proper non-image news. also some style improvements
+
+[33mcommit 4b5ab8a8c8d2f5722f1751ce7c37d11cb3e42526[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 22:14:56 2017 +0200
+
+    .css and some tweaking
+
+[33mcommit e452d59851ba0b71fbd36bd544fa745079cbca66[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 18:43:40 2017 +0200
+
+    Log in system for writing articles
+
+[33mcommit 94142aaac728a141bd3139dcaadbd96c0e3caf76[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 17:41:22 2017 +0200
+
+    Heroku button
+
+[33mcommit 7f616676748b6ff001e9765640d3beb1e8989272[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 17:27:42 2017 +0200
+
+    Major structural change
+
+[33mcommit 79842311c4f9466eefc67ef3c11e51d3bec80ecf[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 17:22:36 2017 +0200
+
+    Heroku stuff
+
+[33mcommit 5cf4da1cfdead325a8946819135f86dffb453edc[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 17:14:14 2017 +0200
+
+    Still tweaking for travis
+
+[33mcommit dd112f98a608a2ccc2ef2f9a3577aed707d894fc[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 17:12:09 2017 +0200
+
+    Adding something to travis thing
+
+[33mcommit 5f58a6d06fd49c1563736c88acdd7eedada7e76f[m
+Author: Olli <ollikarki94@gmail.com>
+Date:   Sat Dec 9 17:09:38 2017 +0200
+
+    Travis file
+
+[33mcommit b26291456006286e187fae059168485eb6651190[m
+Author: Olli Kärki <31446202+GourmetHunter@users.noreply.github.com>
+Date:   Sat Dec 9 16:43:20 2017 +0200
+
+    Initial Upload
+    
+    All the initial files created before the creation of the git.
+
+[33mcommit 7b6826951c05de4ab4ee8aba6093cc2beca33620[m
+Author: Olli Kärki <31446202+GourmetHunter@users.noreply.github.com>
+Date:   Sat Dec 9 16:41:13 2017 +0200
+
+    Initial commit

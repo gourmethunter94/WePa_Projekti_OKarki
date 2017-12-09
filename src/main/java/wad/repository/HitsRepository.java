@@ -8,11 +8,12 @@ package wad.repository;
 import java.util.List;
 import wad.domain.NewsObject;
 import org.springframework.data.jpa.repository.JpaRepository;
+import wad.domain.Hits;
 
 /**
  *
  * @author ollik
  */
-public interface NewsObjectRepository extends JpaRepository<NewsObject, Long>{
-    List<NewsObject> findAllByCategory(String category);
+public interface HitsRepository extends JpaRepository<Hits, Long>{
+    List<Hits> findAllByNewsObject(NewsObject newsObject);
 }

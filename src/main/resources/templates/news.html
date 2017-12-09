@@ -9,22 +9,30 @@
     <body>
 
         <nav class="nlink">
-            <a class="home" href="/news"> Home</a>
-            <a class="write" href="/write"> Write</a>
-            <form class="logout"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
+            <a class="navl" href="/news"> Home</a>
+            <a sec:authorize="hasAuthority('USER')" class="navl" href="/write"> Write</a>
+            <form class="log"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
                 <input type="submit" value="Logout"></input>
+            </form>
+            <form class="log"  th:action="@{/login}" method="POST" sec:authorize="isAnonymous()">
+                <a>User:</a>
+                <input type="text" name="username"/>
+                <a style="margin-left: 8px">Password:</a>
+                <input type="password" name="password"/>
+                <input name="submit" type="submit" value="Login"></input>
             </form>
         </nav>
 
         <h2 th:text="${news.title}"/>
+        
+        <a style="font-weight: bold">Category: <a style="font-weight: normal" th:text="${news.category}"/></a><br/>
+        <a style="font-weight: bold">Hits: <a style="font-weight: normal" th:text="${hits}"></a></a><br/>
         
         <form class="remove"  th:action="@{/news/{id}/remove(id=${news.id})}" method="POST" sec:authorize="hasAuthority('ADMIN')">
             <input type="submit" value="Remove"></input>
         </form>
 
         <br/>
-        
-        Hits: <a th:text="${news.hits}"></a>
 
         <p th:if="${current!=null}">
             <img th:src="@{/news/{id}/image(id=${current})}"/>
@@ -33,6 +41,8 @@
         <br/>
 
         <a th:text="${news.text}"/><br/><br/>
+        
+        <p style="font-weight: bold">Author: <a style="font-weight: normal" th:text="${news.author}"/></p>
 
     </body>
 </html>

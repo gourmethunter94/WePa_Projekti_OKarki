@@ -17,6 +17,17 @@ nav.nlink {
 	margin-top: -0.5em;
 }
 
-form.logout {
+nav.slink {
+	background: #deb;
+	padding: 6px;
+	margin-left: 0em;
+	margin-top: -1.55em;
+}
+
+form.log {
     float:right;
+}
+
+a.navl {
+    margin-right: 8px
 }

@@ -8,10 +8,17 @@
     <body>
         
         <nav class="nlink">
-            <a class="home" href="/news"> Home</a>
-            <a class="write"> Write</a>
-            <form class="logout"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
+            <a class="navl" href="/news"> Home</a>
+            <a sec:authorize="hasAuthority('USER')" class="navl"> Write</a>
+            <form class="log"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
                   <input type="submit" value="Logout"></input>
+            </form>
+            <form class="log"  th:action="@{/login}" method="POST" sec:authorize="isAnonymous()">
+                <a>User:</a>
+                <input type="text" name="username"/>
+                <a style="margin-left: 8px">Password:</a>
+                <input type="password" name="password"/>
+                <input name="submit" type="submit" value="Login"></input>
             </form>
         </nav>
         
@@ -22,10 +29,17 @@
         <form method="POST" th:action="@{/news}" enctype="multipart/form-data">
             <a>News Image</a>
             <input type="file" name="file" id="file"/><br/>
-            <a>Title</a>
+            <br/>
+            <a>Title</a><br/>
             <input type="text" name="title" id="title"/><br/>
             <a>Content</a><br/>
             <textarea rows="4" cols="50" name="content" id="content"></textarea><br/>
+            <a>Author</a><br/>
+            <input type="text" name="author" id="author"/><br/>
+            <br/>
+            <select name="category">
+                <option th:each="cat:${categories}" th:text="${cat}">option</option>
+            </select><br/>
             <input type="submit" value="Post"/>
         </form>
         

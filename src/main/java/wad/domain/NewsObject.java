@@ -5,9 +5,13 @@
  */
 package wad.domain;
 
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,15 +31,24 @@ public class NewsObject extends AbstractPersistable<Long> {
     @Lob
     private byte[] content;
     
+    @Column(columnDefinition = "TEXT")
     private String title;
     
     @Column(columnDefinition = "TEXT")
     private String text;
     
-    private Long date;
+    private Date nodate;
     
-    private Long hits;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Hits> hits;
     
     private boolean hasImage;
+    
+    private String category;
+    
+    @Column(columnDefinition = "TEXT")
+    private String author;
+    
+    private String small;
     
 }

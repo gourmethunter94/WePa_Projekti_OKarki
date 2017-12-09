@@ -2,33 +2,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.springframework.org/security/tags">
     <head lang="en">
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="tyylit.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" media="all" th:href="@{/tyylit.css}"/>
         <title>Ollimus News</title>
     </head>
     <body>
 
         <nav class="nlink">
-            <a class="home"> Home</a>
-            <a class="write" href="/write"> Write</a>
-            <form class="logout"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
-                  <input type="submit" value="Logout"></input>
+            <a class="navl"> Home</a>
+            <a sec:authorize="hasAuthority('USER')" class="navl" href="/write"> Write</a>
+            <form class="log"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
+                <input type="submit" value="Logout"></input>
+            </form>
+            <form class="log"  th:action="@{/login}" method="POST" sec:authorize="isAnonymous()">
+                <a>User:</a>
+                <input type="text" name="username"/>
+                <a style="margin-left: 8px">Password:</a>
+                <input type="password" name="password"/>
+                <input name="submit" type="submit" value="Login"></input>
             </form>
         </nav>
 
         <h1>Ollimus News</h1>
-        
-        <h2>Hottest</h2>
-        <ol>
-            <li th:each="news : ${hot}">
-                <a th:href="@{/news/{id}(id=${news.id})}" th:text="${news.title}"></a>
-                Hits: <a th:text="${news.hits}"></a>
-            </li>
-        </ol>
 
-        <h2>Latest</h2>
+        <nav class="slink">
+            <a class="navl" href="/news"> Latest</a>
+            <a class="navl" href="/news/hottest"> Hottest</a>
+            <form style="float: right" method="GET" th:action="@{/news/category}">
+                <select name="category">
+                    <option th:each="cat:${categories}" th:text="${cat}">option</option>
+                </select>
+                <input type="submit" value="By Category"/>
+            </form>
+        </nav>
+
+        <h2 th:text="${title}"/>
         <ol>
             <li th:each="news : ${news}">
-                <a th:href="@{/news/{id}(id=${news.id})}" th:text="${news.title}"></a>
+                <a style="font-weight: bold" th:href="@{/news/{id}(id=${news.id})}" th:text="${news.title}"></a>
+                <a style="font-style: italic; margin-left: 16px; font-size: smaller" th:text="${news.nodate}"/><br/>
+                <a th:if="${news.content!=null}" style="float: left">
+                    <img style="margin-right: 4px" th:src="@{/news/{id}/image(id=${news.id})}" height="42" width="42"/>
+                </a>
+                <a th:text="${news.small}" style="float: bottom"/>
+                <br/>
+                <a style="font-weight: bold">Author: <a th:text="${news.author}" style="float: bottom"/></a>
+                <a style="font-weight: bold"> | </a>
+                <a style="font-weight: bold">Category: <a th:text="${news.category}" style="float: bottom"/></a>
+                <br/>
+                <br/>
             </li>
         </ol>
 
