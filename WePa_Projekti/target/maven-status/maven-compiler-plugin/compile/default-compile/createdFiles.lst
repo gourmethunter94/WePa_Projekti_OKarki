@@ -1,0 +1,5 @@
+wad\controller\DefaultController.class
+wad\GifBinApplication.class
+wad\repository\FileObjectRepository.class
+wad\controller\GifsController.class
+wad\domain\FileObject.class

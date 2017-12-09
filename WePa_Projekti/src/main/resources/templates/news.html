@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Ollimus News</title>
+    </head>
+    <body>
+
+        <h2 th:text="${title}"/>
+
+        <div th:if="${current != null}">
+            <img th:src="@{/news/{id}/image(id=${current})}"/>
+        </div>
+
+        <br/>
+
+        <a th:text="${text}"/><br/><br/>
+
+        <a th:href="@{/news}">Back to Home</a>
+        
+    </body>
+</html>
