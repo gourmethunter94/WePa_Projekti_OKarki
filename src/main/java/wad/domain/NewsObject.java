@@ -34,4 +34,8 @@ public class NewsObject extends AbstractPersistable<Long> {
     
     private Long date;
     
+    private Long hits;
+    
+    private boolean hasImage;
+    
 }

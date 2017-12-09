@@ -7,24 +7,32 @@
         <link rel="stylesheet" type="text/css" media="all" th:href="@{/tyylit.css}"/>
     </head>
     <body>
-        
+
         <nav class="nlink">
             <a class="home" href="/news"> Home</a>
             <a class="write" href="/write"> Write</a>
             <form class="logout"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
-                  <input type="submit" value="Logout"></input>
+                <input type="submit" value="Logout"></input>
             </form>
         </nav>
 
-        <h2 th:text="${title}"/>
+        <h2 th:text="${news.title}"/>
+        
+        <form class="remove"  th:action="@{/news/{id}/remove(id=${news.id})}" method="POST" sec:authorize="hasAuthority('ADMIN')">
+            <input type="submit" value="Remove"></input>
+        </form>
+
+        <br/>
+        
+        Hits: <a th:text="${news.hits}"></a>
 
         <p th:if="${current!=null}">
-        <img th:src="@{/news/{id}/image(id=${current})}"/>
+            <img th:src="@{/news/{id}/image(id=${current})}"/>
         </p>
 
         <br/>
 
-        <a th:text="${text}"/><br/><br/>
-        
+        <a th:text="${news.text}"/><br/><br/>
+
     </body>
 </html>

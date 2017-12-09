@@ -15,8 +15,17 @@
             </form>
         </nav>
 
-        <h2>Ollimus News</h2>
+        <h1>Ollimus News</h1>
+        
+        <h2>Hottest</h2>
+        <ol>
+            <li th:each="news : ${hot}">
+                <a th:href="@{/news/{id}(id=${news.id})}" th:text="${news.title}"></a>
+                Hits: <a th:text="${news.hits}"></a>
+            </li>
+        </ol>
 
+        <h2>Latest</h2>
         <ol>
             <li th:each="news : ${news}">
                 <a th:href="@{/news/{id}(id=${news.id})}" th:text="${news.title}"></a>

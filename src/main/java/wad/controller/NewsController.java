@@ -36,14 +36,18 @@ public class NewsController {
     public void init() {
         NewsObject ne1 = new NewsObject();
         ne1.setTitle("User and Password");
-        ne1.setText("Username: jour | Password: nalist");
+        ne1.setText("Username: jour | Password: nalist | can write and post news. // Admin user: ad | password: min | can also remove posted news.");
         ne1.setDate(System.nanoTime());
+        ne1.setHits((long)0);
+        ne1.setHasImage(false);
         newsObjectRepository.save(ne1);
         
         NewsObject ne2 = new NewsObject();
         ne2.setTitle("Long text test");
-        ne2.setText("My father took me in to the city, to see a marching! Son when you grow up will you be the saviour of the broken, the beaten and the damned!? Random words from a song I am currently listening. I need to make this far longer for this to actually work. This might take some time, but when it works, it might be quite rewarding.");
+        ne2.setText("Random text, used to test long posts, it might take a while to write enough to see how well changing row works. I do not have any proper idea on what to write here so I'll just ramble aimlessly for several dozen more words. Did you know that producing random filler text can be quite tedious, if you didn't, well now you do. I am sorry if you read of all this, well not really. It's your own faulth if you did, after all I did point out that this was just a filler text. Or maybe I didn't, you should have noticed that on your own.");
         ne2.setDate(System.nanoTime());
+        ne2.setHits((long)0);
+        ne1.setHasImage(false);
         newsObjectRepository.save(ne2);
     }
 
@@ -52,6 +56,8 @@ public class NewsController {
 
         List<NewsObject> nol = newsObjectRepository.findAll();
 
+        List<NewsObject> hot = newsObjectRepository.findAll();
+        
         Collections.sort(nol, new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
@@ -59,8 +65,16 @@ public class NewsController {
             }
         });
 
+        Collections.sort(hot, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return ((NewsObject) o2).getHits().compareTo(((NewsObject) o1).getHits());
+            }
+        });
+        
         model.addAttribute("news", nol);
-
+        model.addAttribute("hot", hot.subList(0, Math.min(5, hot.size())));
+        
         return "/home.html";
     }
 
@@ -73,14 +87,21 @@ public class NewsController {
     public String getPage(Model model, @PathVariable Long id) {
 
         NewsObject no = newsObjectRepository.getOne(id);
+        
+        no.setHits(no.getHits()+1);
+        
+        newsObjectRepository.save(no);
+        
         Long current = null;
 
         if (no != null) {
 
-            current = no.getId();
+            if(no.isHasImage()){
+                current = no.getId();
+            }
+            
             model.addAttribute("current", current);
-            model.addAttribute("title", no.getTitle());
-            model.addAttribute("text", no.getText());
+            model.addAttribute("news", no);
 
         }
 
@@ -94,15 +115,23 @@ public class NewsController {
         return fo.getContent();
     }
 
-    
+    @PostMapping("/news/{id}/remove")
+    public String removeNews(@PathVariable Long id){
+        NewsObject no = newsObjectRepository.findById(id).get();
+        newsObjectRepository.delete(no);
+        return "redirect:/news";
+    }
     
     @PostMapping("/news")
     public String postContent(@RequestParam("file") MultipartFile file, @RequestParam String title, @RequestParam String content) throws IOException {
 
         NewsObject no = new NewsObject();
+        
+        no.setHasImage(false);
 
         if (file.getContentType().equals("image/gif") || file.getContentType().equals("image/png") || file.getContentType().equals("image/jpeg")) {
             no.setContent(file.getBytes());
+            no.setHasImage(true);
         }
         
         if (title != null && title.length() > 0) {
@@ -112,8 +141,8 @@ public class NewsController {
 
                 no.setDate(System.nanoTime());
 
-                Long a = System.nanoTime();
-
+                no.setHits((long)0);
+                
                 newsObjectRepository.save(no);
 
             }
