@@ -37,7 +37,7 @@ public class NewsController {
         
         model.addAttribute("news", nol);
         
-        return "/home";
+        return "/home.html";
     }
     
     @GetMapping("/news/{id}")
@@ -55,7 +55,7 @@ public class NewsController {
         
         }
         
-        return "/news";
+        return "/news.html";
     }
     
     
