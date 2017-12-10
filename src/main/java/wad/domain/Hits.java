@@ -25,6 +25,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @NoArgsConstructor
 public class Hits extends AbstractPersistable<Long> {
     
+    //Contains date and a news it is linked to.
+    
     private Date date;
     
     @ManyToOne

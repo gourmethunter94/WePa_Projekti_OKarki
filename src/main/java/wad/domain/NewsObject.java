@@ -28,6 +28,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @NoArgsConstructor
 public class NewsObject extends AbstractPersistable<Long> {
     
+    //Various data relevant to the news.
+    
     @Lob
     private byte[] content;
     

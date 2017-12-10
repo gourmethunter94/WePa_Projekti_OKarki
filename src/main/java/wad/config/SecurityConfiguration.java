@@ -15,7 +15,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/free").permitAll()
+            .antMatchers("/free").permitAll() //Allows ordinary users to access certain pages
             .antMatchers("/access").permitAll()
             .antMatchers("/").permitAll()
             .antMatchers("/news").permitAll()
@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+        auth.inMemoryAuthentication() // initializes two users for the service
                 .withUser("jour").password("nalist").roles("USER").authorities("USER");
         auth.inMemoryAuthentication()
                 .withUser("ad").password("min").roles("ADMIN").authorities("USER","ADMIN");

@@ -39,6 +39,7 @@
         </nav>
 
         <h2 th:text="${title}"/>
+        
         <ol>
             <li th:each="news : ${news}">
                 <a style="font-weight: bold" th:href="@{/news/{id}(id=${news.id})}" th:text="${news.title}"></a>
