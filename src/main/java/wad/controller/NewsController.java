@@ -248,6 +248,13 @@ public class NewsController {
     @PostMapping("/news/{id}/remove")
     public String removeNews(@PathVariable Long id){
         NewsObject no = newsObjectRepository.findById(id).get();
+        
+        List<Hits> hits = hitsRepository.findAllByNewsObject(no);
+        
+        for(Hits h : hits){
+            hitsRepository.delete(h);
+        }
+        
         newsObjectRepository.delete(no);
         return "redirect:/news";
     }
