@@ -18,6 +18,11 @@ password: min
 
 Sivustolla kirjoitetut uutiset voivat sisältää vain 1 categorian ja 1 kirjoittajan (kirjoittaja erillinen käyttäjästä).
 
+Palvelin ohjelmalle on 3 testiä,
+1. Testaa uudelleen ohjauksen etusivulle ja sisään kirjautumisen.
+2. Testaa uutisten lisäyksen
+3. Testaa uutisten lisäyksen ja poiston.
+
 Sivustoa voisi parantaa lisäämällä seuraavat asiat.
   - Käyttäjien rekisteröinti.
   - Kommentti osiot uutisiin.
