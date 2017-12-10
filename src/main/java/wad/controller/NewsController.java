@@ -275,6 +275,7 @@ public class NewsController {
         return "redirect:/news";
     }
 
+    @Secured("USER")
     @PostMapping("/news") //Post mapping from the write page, adds new article
     public String postContent(@RequestParam("file") MultipartFile file, @RequestParam String title, @RequestParam String content, @RequestParam String category, @RequestParam String author) throws IOException {
 
