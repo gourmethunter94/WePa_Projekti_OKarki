@@ -129,6 +129,51 @@ public class NewsController {
         
         return "/home.html";
     }
+
+    @GetMapping("/news/all")
+    public String allNews(Model model) {
+
+        List<NewsObject> nol = newsObjectRepository.findAll();
+        
+        Collections.sort(nol, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return ((NewsObject) o2).getNodate().compareTo(((NewsObject) o1).getNodate());
+            }
+        });
+        
+        model.addAttribute("title", "All");
+        model.addAttribute("news", nol);
+        model.addAttribute("categories", categories);
+        
+        
+        return "/home.html";
+    }
+
+    @GetMapping("/news/mostread")
+    public String mostRead(Model model) {
+
+        List<NewsObject> nol = newsObjectRepository.findAll();
+
+        Collections.sort(nol, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                
+                List <Date> o1dates = hitsRepository.findAllByNewsObject((NewsObject)o1).stream().map(k -> k.getDate()).collect(Collectors.toList());
+                List <Date> o2dates = hitsRepository.findAllByNewsObject((NewsObject)o2).stream().map(k -> k.getDate()).collect(Collectors.toList());
+                
+                
+                return ((Integer)o2dates.size()).compareTo(o1dates.size());
+            }
+        });
+        
+        model.addAttribute("title", "Most Read");
+        model.addAttribute("news", nol);
+        model.addAttribute("categories", categories);
+        
+        
+        return "/home.html";
+    }
     
     @GetMapping("/news/category")
     public String byCategory(@RequestParam String category, Model model) {

@@ -28,6 +28,8 @@
         <nav class="slink">
             <a class="navl" href="/news"> Latest</a>
             <a class="navl" href="/news/hottest"> Hottest</a>
+            <a class="navl" href="/news/all"> All</a>
+            <a class="navl" href="/news/mostread"> Most Read</a>
             <form style="float: right" method="GET" th:action="@{/news/category}">
                 <select name="category">
                     <option th:each="cat:${categories}" th:text="${cat}">option</option>
