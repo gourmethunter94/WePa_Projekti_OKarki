@@ -96,7 +96,7 @@ public class NewsController {
         model.addAttribute("categories", categories);
         
         
-        return "/home.html";
+        return "home";
     }
 
     @GetMapping("/news/hottest")
@@ -127,7 +127,7 @@ public class NewsController {
         model.addAttribute("categories", categories);
         
         
-        return "/home.html";
+        return "home";
     }
 
     @GetMapping("/news/all")
@@ -147,7 +147,7 @@ public class NewsController {
         model.addAttribute("categories", categories);
         
         
-        return "/home.html";
+        return "home";
     }
 
     @GetMapping("/news/mostread")
@@ -172,7 +172,7 @@ public class NewsController {
         model.addAttribute("categories", categories);
         
         
-        return "/home.html";
+        return "home";
     }
     
     @GetMapping("/news/category")
@@ -192,13 +192,13 @@ public class NewsController {
         model.addAttribute("categories", categories);
         
         
-        return "/home.html";
+        return "home";
     }
     
     @GetMapping("/write")
     public String getWrite(Model model) {
         model.addAttribute("categories", categories);
-        return "/write.html";
+        return "write";
     }
 
     @GetMapping("/news/{id}")
@@ -235,7 +235,7 @@ public class NewsController {
 
         }
 
-        return "/news.html";
+        return "news";
     }
 
     @GetMapping(path = "/news/{id}/image", produces = "image/gif")
