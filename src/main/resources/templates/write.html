@@ -9,16 +9,16 @@
         
         <nav class="nlink">
             <a class="navl" href="/news"> Home</a>
-            <a sec:authorize="hasAuthority('USER')" class="navl"> Write</a>
+            <a sec:authorize="hasAuthority('USER')" class="navl" name="write"> Write</a>
             <form class="log"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
                   <input type="submit" value="Logout"></input>
             </form>
             <form class="log"  th:action="@{/login}" method="POST" sec:authorize="isAnonymous()">
                 <a>User:</a>
-                <input type="text" name="username"/>
+                <input type="text" name="username" id="username"/>
                 <a style="margin-left: 8px">Password:</a>
-                <input type="password" name="password"/>
-                <input name="submit" type="submit" value="Login"></input>
+                <input type="password" name="password" id="password"/>
+                <input name="submit" type="submit" value="Login" id="login"></input>
             </form>
         </nav>
         
@@ -40,7 +40,7 @@
             <select name="category">
                 <option th:each="cat:${categories}" th:text="${cat}">option</option>
             </select><br/>
-            <input type="submit" value="Post"/>
+            <input type="submit" name="postnews" value="Post"/>
         </form>
         
     </body>

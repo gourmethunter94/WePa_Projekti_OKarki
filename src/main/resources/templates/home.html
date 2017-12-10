@@ -10,16 +10,16 @@
 
         <nav class="nlink">
             <a class="navl"> Home</a>
-            <a sec:authorize="hasAuthority('USER')" class="navl" href="/write"> Write</a>
+            <a sec:authorize="hasAuthority('USER')" class="navl" href="/write" name="write"> Write</a>
             <form class="log"  th:action="@{/logout}" method="POST" sec:authorize="hasAuthority('USER')">
                 <input type="submit" value="Logout"></input>
             </form>
             <form class="log"  th:action="@{/login}" method="POST" sec:authorize="isAnonymous()">
                 <a>User:</a>
-                <input type="text" name="username"/>
+                <input type="text" name="username" id="username"/>
                 <a style="margin-left: 8px">Password:</a>
-                <input type="password" name="password"/>
-                <input name="submit" type="submit" value="Login"></input>
+                <input type="password" name="password" id="password"/>
+                <input name="submit" type="submit" value="Login" id="login"></input>
             </form>
         </nav>
 
@@ -42,7 +42,7 @@
         
         <ol>
             <li th:each="news : ${news}">
-                <a style="font-weight: bold" th:href="@{/news/{id}(id=${news.id})}" th:text="${news.title}"></a>
+                <a style="font-weight: bold" th:href="@{/news/{id}(id=${news.id})}" th:text="${news.title}" th:name="${news.title}"/>
                 <a style="font-style: italic; margin-left: 16px; font-size: smaller" th:text="${news.nodate}"/><br/>
                 <a th:if="${news.content!=null}" style="float: left">
                     <img style="margin-right: 4px" th:src="@{/news/{id}/image(id=${news.id})}" height="42" width="42"/>
