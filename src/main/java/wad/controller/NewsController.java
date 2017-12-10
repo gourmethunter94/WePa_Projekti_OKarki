@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -195,6 +196,7 @@ public class NewsController {
         return "home";
     }
 
+    @Secured("USER")
     @GetMapping("/write") //shows the news writing page.
     public String getWrite(Model model) {
         model.addAttribute("categories", categories);
@@ -256,6 +258,7 @@ public class NewsController {
         return fo.getContent();
     }
 
+    @Secured("ADMIN")
     @PostMapping("/news/{id}/remove") // remove a news article
     public String removeNews(@PathVariable Long id) {
         NewsObject no = newsObjectRepository.findById(id).get();
