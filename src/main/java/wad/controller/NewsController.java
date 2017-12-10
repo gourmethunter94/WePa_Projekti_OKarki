@@ -252,6 +252,7 @@ public class NewsController {
         List<Hits> hits = hitsRepository.findAllByNewsObject(no);
         
         for(Hits h : hits){
+            no.getHits().remove(h);
             hitsRepository.delete(h);
         }
         
