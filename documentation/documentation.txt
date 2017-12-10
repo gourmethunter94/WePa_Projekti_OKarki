@@ -1,0 +1,23 @@
+Sivu tarjoaa mahdollisuuden lukea kirjoitettuja uutisia, ja lajitella ne 5 eri tavalla.
+
+1. Tapa: 5 viimeisintä
+2. Tapa: 15 suosituinta uutista viimeviikon sisällä.
+3. Tapa: Kaikki uutiset uusimmasta vanhimpaan.
+4. Tapa: Kaikki uutiset luku kertojen perusteella.
+5. Tapa: Categorian mukaisesti.
+
+Järjestelmässä on kaksi käyttäjää joille voi kirjautua sisään, ja joilta voi kirjautua ulos.
+
+username: jour
+salasana: nalist
+  kuvaus: Voi kirjoittaa uusia uutisia.
+
+username: ad
+password: min
+  kuvaus: Voi kirjoittaa uusia uutisia, ja poistaa kirjoitettuja uutisia.
+
+Sivustolla kirjoitetut uutiset voivat sisältää vain 1 categorian ja 1 kirjoittajan (kirjoittaja erillinen käyttäjästä).
+
+Sivustoa voisi parantaa lisäämällä seuraavat asiat.
+  - Käyttäjien rekisteröinti.
+  - Kommentti osiot uutisiin.
